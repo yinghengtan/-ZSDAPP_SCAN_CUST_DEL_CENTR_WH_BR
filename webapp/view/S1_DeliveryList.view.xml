@@ -1,0 +1,45 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core"
+	xmlns:smartTable="sap.ui.comp.smarttable" controllerName="sdu001.ZSDAPP_SCAN_CUST_DEL_CENTR_WH_BR.controller.S1_DeliveryList">
+	<Page title="{i18n>appViewDeliveryList}">
+		<smartFilterBar:SmartFilterBar id="smartFilterBarId" entitySet="DeliveryListSet" persistencyKey="SmartFilterPKey"
+			beforeVariantFetch="onSaveVariant" afterVariantLoad="onLoadVariant" initialise="onInitSmartFilter" useDateRangeType="true">
+			<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Vstel" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="Auart" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="Wadat" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="Sort1" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="Matnr" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="VbelnVa" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+				<smartFilterBar:ControlConfiguration key="Wbstk" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false">
+					<smartFilterBar:customControl>
+						<RadioButtonGroup id="radioButtonGroupId" columns="1" width="100%" class="sapUiMediumMarginBottom">
+							<RadioButton id="radioButtonId1" text="{i18n>radioButtonOpen}"/>
+							<RadioButton id="radioButtonId2" text="{i18n>radioButtonClosed}"/>
+						</RadioButtonGroup>
+					</smartFilterBar:customControl>
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="ZviewTy" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false">
+					<smartFilterBar:customControl>
+						<RadioButtonGroup id="radioButtonViewTypeGroupId" columns="1" width="100%" class="sapUiMediumMarginBottom">
+							<RadioButton id="radioButtonViewTypeId1" text="{i18n>radioButtonView1}"/>
+							<RadioButton id="radioButtonViewTypeId2" text="{i18n>radioButtonView2}"/>
+						</RadioButtonGroup>
+					</smartFilterBar:customControl>
+				</smartFilterBar:ControlConfiguration>
+			</smartFilterBar:controlConfiguration>
+		</smartFilterBar:SmartFilterBar>
+		<Button xmlns="sap.m" text="{i18n>scanOrderId}" id="scanOrderButtonId" type="Emphasized" press="onScanOrderPress"/>
+		<smartTable:SmartTable id="smartTableId" smartFilterId="smartFilterBarId" tableType="ResponsiveTable" editable="false"
+			entitySet="DeliveryListSet" useVariantManagement="true" useTablePersonalisation="true" header="{i18n>deliveryList}" showRowCount="true"
+			useExportToExcel="false" enableAutoBinding="false" persistencyKey="SmartTablePKey" beforeRebindTable="onBeforeRebindTable"
+			initiallyVisibleFields="VbelnVa,VbelnVl,Sort1,Name1,Matnr,ZwbstkTxt" demandPopin="true">
+			<Table id="tableId">
+				<columns></columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onItemPress"></ColumnListItem>
+				</items>
+			</Table>
+		</smartTable:SmartTable>
+		<content/>
+	</Page>
+</mvc:View>

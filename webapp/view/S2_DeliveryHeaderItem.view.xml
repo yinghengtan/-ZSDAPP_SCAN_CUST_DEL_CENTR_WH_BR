@@ -1,0 +1,124 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns="sap.uxap" xmlns:layout="sap.ui.layout"
+	controllerName="sdu001.ZSDAPP_SCAN_CUST_DEL_CENTR_WH_BR.controller.S2_DeliveryHeaderItem">
+	<m:App id="app">
+		<m:pages>
+			<m:Page id="pageId" title="{i18n>deliveryHeader}" showNavButton="true" navButtonPress="onNavBack">
+				<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="false" useIconTabBar="false" showFooter="false">
+					<sections>
+						<ObjectPageSection title="{i18n>header}" id="section1">
+							<subSections>
+								<ObjectPageSubSection title="{i18n>header}" mode="Expanded">
+									<blocks>
+										<m:VBox>
+											<m:Label text="{i18n>gwsNoSlipNumber}" design="Bold"/>
+											<m:Text id="gwsNoSlipNumberTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>salesOrder}" design="Bold"/>
+											<m:Text id="salesOrderTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>delivery}" design="Bold"/>
+											<m:Text id="deliveryTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>locationOfTheProduct}" design="Bold"/>
+											<m:Text id="locationOfTheProductTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>customerCode}" design="Bold"/>
+											<m:Text id="customerCodeTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>customerName}" design="Bold"/>
+											<m:Text id="customerNameTextId"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>trackingNumber}" design="Bold"/>
+											<!--<m:Input id="trackingNumberId" type="Text" maxLength="25" width="200px" editable="true"/>-->
+											<m:Input id="trackingNumberId" type="Text" maxLength="25" width="200px" editable="false"/>
+											<m:Button id="trackingNumberButtonId" text="{i18n>scanTrackingNumber}" type="Emphasized" press="onTrackingNumberPress" width="200px"/>
+											<m:Label text=" "/>
+											<m:Label id="addTrackingNumberLabelId" text="{i18n>moreTrackingNumbers}" design="Bold"/>
+											<m:HBox>
+												<m:Button id="addTrackingNumberButtonId" icon="sap-icon://add" text="{i18n>add}" type="Emphasized" press="onAddTrackingNumberPress"
+													visible="false"/>
+											</m:HBox>
+											<m:Table id="trackingNumberTableId" mode="Delete" delete="onDelete" noDataText="{i18n>clickAddButton}" width="300px" visible="false">
+												<m:items></m:items>
+												<m:columns>
+													<m:Column id="column0"></m:Column>
+												</m:columns>
+											</m:Table>
+										</m:VBox>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection title="{i18n>itemDetail}" id="section2">
+							<subSections>
+								<ObjectPageSubSection title="{i18n>itemDetail}" mode="Expanded">
+									<blocks>
+										<m:Table id="tableId" items="{path: '/DeliveryItemSet'}">
+											<m:items>
+												<m:ColumnListItem type="Active" id="columnListItemId">
+													<m:cells>
+														<m:VBox justifyContent="SpaceAround">
+															<m:Label text="{i18n>position} {Posnr}" design="Bold" id="posnrTextId"/>
+															<m:Label text=" "/>
+															<m:Label text="{i18n>materialCode}" design="Bold"/>
+															<m:Text text="{Matnr}" id="matnrTextId"/>
+															<m:Label text=" "/>
+															<m:Label text="{i18n>materialDescription}" design="Bold"/>
+															<m:Text text="{Maktx}" id="maktxTextId"/>
+															<m:Label text=" "/>
+															<m:Label text="{i18n>quantity}" design="Bold"/>
+															<m:Text text="{Lfimg}" id="lfimgTextId"/>
+															<m:Label text=" "/>
+															<m:Label text="{i18n>uom}" design="Bold"/>
+															<m:Text text="{Meins}" id="meinsTextId"/>
+															<m:Label text=" "/>
+															<m:Label id="serialNumberLabelId" text="{i18n>serialNumberLabel}" design="Bold" visible="false"/>
+															<!--<m:Input id="serialNumberId" type="Text" maxLength="25" width="200px" change="onChangeSerialNumber" visible="false" editable="true"/>-->
+															<m:Input id="serialNumberId" type="Text" maxLength="25" width="200px" change="onChangeSerialNumber" visible="false" editable="false"/>
+															<m:Button id="serialNumberButtonId" text="{i18n>scanSerialNumber}" type="Emphasized" press="onSerialNumberPress" width="200px" visible="false"/>
+															<m:Label text=" "/>
+														</m:VBox>
+													</m:cells>
+												</m:ColumnListItem>
+											</m:items>
+											<m:columns>
+												<m:Column></m:Column>
+											</m:columns>
+										</m:Table>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection title="{i18n>deliveryStatus}" id="section3">
+							<subSections>
+								<ObjectPageSubSection title="{i18n>deliveryStatus}" mode="Expanded">
+									<blocks>
+										<m:VBox>
+											<m:Label text="{i18n>labelGoodsIssueDate}" design="Bold"/>
+											<m:DatePicker id="goodsIssueDateId" width="300px" displayFormat="medium" valueFormat="yyyyMMdd"/>
+											<m:Label text=" "/>
+											<m:Label text="{i18n>overallDeliveryStatus}" design="Bold"/>
+											<m:Text id="overallDeliveryStatusTextId"/>
+										</m:VBox>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection id="footerObjectPageSectionId" title=" ">
+							<subSections>
+								<ObjectPageSubSection title=" ">
+									<blocks>
+										<m:HBox>
+											<m:Button text="{i18n>postGoodsIssue}" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+												press="onPostPgi"/>
+										</m:HBox>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</mvc:View>
