@@ -32,7 +32,7 @@
 		<smartTable:SmartTable id="smartTableId" smartFilterId="smartFilterBarId" tableType="ResponsiveTable" editable="false"
 			entitySet="DeliveryListSet" useVariantManagement="true" useTablePersonalisation="true" header="{i18n>deliveryList}" showRowCount="true"
 			useExportToExcel="false" enableAutoBinding="false" persistencyKey="SmartTablePKey" beforeRebindTable="onBeforeRebindTable"
-			initiallyVisibleFields="VbelnVa,VbelnVl,Sort1,Name1,Matnr,ZwbstkTxt" demandPopin="true">
+			initiallyVisibleFields="VbelnVa,VbelnVl,Lgobe,Sort1,Name1,Matnr,ZwbstkTxt" demandPopin="true">
 			<Table id="tableId">
 				<columns></columns>
 				<items>
